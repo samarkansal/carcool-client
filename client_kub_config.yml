@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: client6
+  namespace: vibewheels1
+  labels:
+    app: client6
+spec:
+  containers:
+    - name: client6
+      image: samarkansal/vibewheels:client6.0
+      stdin: true
+      tty: true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client6
+  namespace: vibewheels1
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: client6
+  type: LoadBalancer
