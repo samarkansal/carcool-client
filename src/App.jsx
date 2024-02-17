@@ -5,22 +5,25 @@ import Landing from "./components/layout/Landing";
 import Footer from "./components/layout/Footer";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-
+import { AuthProvider } from "./contexts/AuthContext";
 import "./style.min.css";
 import "./index.css";
+//
 
 const App = () => (
+<AuthProvider>
   <Router>
     <>
-      <Navbar />
+    <Navbar />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Routes>
-      <Footer />
+      
     </>
   </Router>
+  </AuthProvider>
 );
 
 export default App;
